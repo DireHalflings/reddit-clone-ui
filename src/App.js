@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { getUsers } from "./api/users";
+import React, { useEffect } from "react";
+import NavBar from "./components/navbar/navBar";
+import Home from "./components/homePage/home";
+import AddPost from "./components/addPost/addPost";
+import Login from "./components/login/login";
+import { Switch, Route } from "react-router-dom";
+//step 1, setup redux
+// step 2, the rest of the application
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    useEffect(() => {
+        const getAllUsers = async () => {
+            console.log("INSIDE APP JS USE EFFECT");
+            console.log(await getUsers());
+        };
+        getAllUsers();
+    }, []);
+    return (
+        <div className="App">
+            <NavBar />
+            <Switch>
+                <Route exact path="/">
+                    <Login />
+                </Route>
+                <Route path="/home">
+                    <Home />
+                </Route>
+
+                <Route path="/add-post">
+                    <AddPost />
+                </Route>
+            </Switch>
+        </div>
+    );
 }
 
 export default App;
