@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addPost } from "../../redux/actions/postActions";
+// import { addPost } from "../../redux/actions/postActions";
+import { addPost } from "../../api/post";
 
 const AddPost = () => {
     // const [post,setPost] = useState();
-    const [subReddit, setSubReddit] = useState("");
-    const [poster, setPoster] = useState("");
-    const [title, setTitle] = useState("");
-    const [url, setURL] = useState("");
+    const [subReddit, setSubReddit] = useState("subreddit");
+    const [poster, setPoster] = useState("poster");
+    const [title, setTitle] = useState("title");
+    const [url, setURL] = useState("genericurl");
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const handleSubmitBtn = (e) => {
         e.preventDefault();
         const post = {
             subReddit: subReddit,
-            poster: poster,
             title: title,
             url: url,
-            username: "username",
+            username: poster,
         };
-        dispatch(addPost(post));
-        setSubReddit('');
-        setPoster('');
-        setTitle('');
-        setURL('');
+        addPost(post);
+        // dispatch(addPost(post));
+        setSubReddit("");
+        setPoster("");
+        setTitle("");
+        setURL("");
     };
     return (
         <div className="add-post-container">

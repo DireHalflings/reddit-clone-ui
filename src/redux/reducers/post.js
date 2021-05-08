@@ -1,9 +1,15 @@
-import { ADD_POST } from "../actions/actionConstants";
-import { ADD_COMMENT } from "../actions/actionConstants";
-import { ADD_ONE_TO_VOTE, MINUS_ONE_TO_VOTE } from "../actions/actionConstants";
+import {
+    ADD_POST,
+    UPDATING_POSTS,
+    UPDATED_POSTS,
+    ADD_COMMENT,
+    ADD_ONE_TO_VOTE,
+    MINUS_ONE_TO_VOTE,
+} from "../actions/actionConstants";
 import { v4 } from "uuid";
 
 const initialState = {
+    gettingPosts: false,
     posts: [
         {
             id: v4(),
@@ -40,8 +46,7 @@ const postReducer = (state = initialState, action) => {
             index = postIds.indexOf(action.payload);
             tempPosts = [...state.posts];
             // console.log(tempUpVotePost[postIndex]);
-            tempPosts[index].votes =
-                tempPosts[index].votes + 1;
+            tempPosts[index].votes = tempPosts[index].votes + 1;
             return { ...state, posts: tempPosts };
         case MINUS_ONE_TO_VOTE:
             postIds = state.posts.map((post) => {
@@ -50,8 +55,7 @@ const postReducer = (state = initialState, action) => {
             index = postIds.indexOf(action.payload);
             tempPosts = [...state.posts];
             // console.log(tempDownVotePost[postIndex]);
-            tempPosts[index].votes =
-                tempPosts[index].votes - 1;
+            tempPosts[index].votes = tempPosts[index].votes - 1;
             return { ...state, posts: tempPosts };
         case ADD_POST:
             const post = {
@@ -68,6 +72,15 @@ const postReducer = (state = initialState, action) => {
             tempPosts.push(post);
             console.log(tempPosts);
             return { ...state, posts: tempPosts };
+        case UPDATING_POSTS:
+            console.log("REDUCER", action.payload);
+            return { ...state, gettingPosts: true };
+        case UPDATED_POSTS:
+            return {
+                ...state,
+                gettingPosts: false,
+                posts: action.payload.data,
+            };
         default:
             return state;
     }

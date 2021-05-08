@@ -7,6 +7,8 @@ export const ADD_COMMENT = "ADD_COMMENT";
 
 // ADD POST CONSTANT
 export const ADD_POST = "ADD_POST";
+export const UPDATING_POSTS = "UPDATING_POSTS";
+export const UPDATED_POSTS = "UPDATED_POSTS";
 
 // USERS CONSTANT
 export const USER_LOGGING_IN = "USER_LOGGING_IN";

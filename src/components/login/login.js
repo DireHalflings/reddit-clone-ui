@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../redux/actions/userActions";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+//history.push('/home')
 
 const Login = () => {
-    const [emailInput, setEmailInput] = useState("");
-    const [passwordInput, setPasswordInput] = useState("");
+    const [emailInput, setEmailInput] = useState("Sincere@april.biz");
+    const [passwordInput, setPasswordInput] = useState("password1");
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+    useEffect(() => {
+        console.log("test");
+        console.log(isLoggedIn);
+        if (isLoggedIn) {
+            history.push("/home");
+        }
+    }, [isLoggedIn]);
 
     const handleUserLogin = (e) => {
         e.preventDefault();

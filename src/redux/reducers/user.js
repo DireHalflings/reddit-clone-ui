@@ -8,9 +8,9 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case USER_LOGGING_IN:
-            return { ...state, loggingIn: true, isLoggedIn: true };
+            return { ...state, loggingIn: true, isLoggedIn: false };
         case USER_LOGGED_IN:
-            return { ...state, loggingIn: false, isLoggedIn: false };
+            return { ...state, loggingIn: false, isLoggedIn: true };
         default:
             return state;
     }
