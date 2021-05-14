@@ -3,6 +3,7 @@ import { USER_LOGGING_IN, USER_LOGGED_IN } from "../actions/actionConstants";
 const initialState = {
     loggingIn: false,
     isLoggedIn: false,
+    jwt: ''
 };
 
 const userReducer = (state = initialState, action) => {
@@ -10,7 +11,7 @@ const userReducer = (state = initialState, action) => {
         case USER_LOGGING_IN:
             return { ...state, loggingIn: true, isLoggedIn: false };
         case USER_LOGGED_IN:
-            return { ...state, loggingIn: false, isLoggedIn: true };
+            return { ...state, loggingIn: false, isLoggedIn: true, jwt: action.payload.data };
         default:
             return state;
     }

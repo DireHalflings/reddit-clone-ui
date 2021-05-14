@@ -5,23 +5,27 @@ import {
     ADD_COMMENT,
     ADD_ONE_TO_VOTE,
     MINUS_ONE_TO_VOTE,
+    UPDATED_SUB_POSTS,
+    UPDATING_SUB_POSTS
 } from "../actions/actionConstants";
 import { v4 } from "uuid";
 
 const initialState = {
     gettingPosts: false,
+    gettingSubPosts: false,
+    subPosts: [],
     posts: [
-        {
-            id: v4(),
-            title: "Angry Pug",
-            time: new Date(),
-            username: "DukeOfWindsor",
-            subReddit: "r/pugs",
-            url:
-                "https://static-cdn.jtvnw.net/jtv_user_pictures/4376924f-8207-49a6-85a4-60f2fe20ce91-profile_image-300x300.png",
-            votes: 9700,
-            comments: ["hello", "bye", "hi again"],
-        },
+        // {
+        //     id: v4(),
+        //     title: "Angry Pug",
+        //     time: new Date(),
+        //     username: "DukeOfWindsor",
+        //     subReddit: "r/pugs",
+        //     url:
+        //         "https://static-cdn.jtvnw.net/jtv_user_pictures/4376924f-8207-49a6-85a4-60f2fe20ce91-profile_image-300x300.png",
+        //     votes: 9700,
+        //     comments: ["hello", "bye", "hi again"],
+        // },
     ],
 };
 
@@ -45,7 +49,6 @@ const postReducer = (state = initialState, action) => {
             });
             index = postIds.indexOf(action.payload);
             tempPosts = [...state.posts];
-            // console.log(tempUpVotePost[postIndex]);
             tempPosts[index].votes = tempPosts[index].votes + 1;
             return { ...state, posts: tempPosts };
         case MINUS_ONE_TO_VOTE:
@@ -54,7 +57,6 @@ const postReducer = (state = initialState, action) => {
             });
             index = postIds.indexOf(action.payload);
             tempPosts = [...state.posts];
-            // console.log(tempDownVotePost[postIndex]);
             tempPosts[index].votes = tempPosts[index].votes - 1;
             return { ...state, posts: tempPosts };
         case ADD_POST:
@@ -70,10 +72,8 @@ const postReducer = (state = initialState, action) => {
             };
             tempPosts = [...state.posts];
             tempPosts.push(post);
-            console.log(tempPosts);
             return { ...state, posts: tempPosts };
         case UPDATING_POSTS:
-            console.log("REDUCER", action.payload);
             return { ...state, gettingPosts: true };
         case UPDATED_POSTS:
             return {
@@ -81,6 +81,10 @@ const postReducer = (state = initialState, action) => {
                 gettingPosts: false,
                 posts: action.payload.data,
             };
+        case UPDATING_SUB_POSTS:
+            return { ...state, gettingSubPosts: true };
+        case UPDATED_SUB_POSTS:
+            return { ...state, gettingSubPosts: false, subPosts: action.payload.data };
         default:
             return state;
     }
