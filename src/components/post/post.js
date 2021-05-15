@@ -3,11 +3,12 @@ import PostImg from "./imgs/imgs";
 import PostVotes from "./votes/votes";
 import PostComments from "./postComments/postComments";
 import LoadComments from "./loadComments/loadComments";
+import "./post.css";
 
 const Post = ({ post }) => {
     const { title, time, username, subReddit, url, votes, comments, id } = post;
     return (
-        <div>
+        <div className ='post-container'>
             <h2>{title}</h2>
             <p>
                 Submitted {time.toLocaleString()} ago by {username} to{" "}

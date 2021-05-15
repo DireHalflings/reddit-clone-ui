@@ -7,19 +7,20 @@ import { useSelector } from "react-redux";
 import NavBar from "./components/navbar/navBar";
 import Home from "./components/home/home";
 import AddPost from "./components/addPost/addPost";
-import Login from "./components/login/login";
-import SubRedditIndex from './components/subRedditIndex/subRedditIndex';
-import SubRedditHome from './components/subredditHome/subredditHome';
+import SubRedditIndex from "./components/subRedditIndex/subRedditIndex";
+import SubRedditHome from "./components/subredditHome/subredditHome";
 
+import LoginPage from "./pages/loginPage";
 //step 1, setup redux
 // step 2, the rest of the application
 
 function App() {
-
-    const token = useSelector(state => state.user.jwt);
+    const token = useSelector((state) => state.user.jwt);
     console.log(token);
 
-    return !token ? <Login /> : (
+    return !token ? (
+        <LoginPage />
+    ) : (
         <div className="App">
             <NavBar />
             <Switch>

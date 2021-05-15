@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 // import { addPost } from "../../redux/actions/postActions";
 import { addPost } from "../../api/post";
+import { useSelector } from "react-redux";
 
 const AddPost = () => {
     // const [post,setPost] = useState();
     const [subReddit, setSubReddit] = useState("subreddit");
-    const [poster, setPoster] = useState("poster");
+    // const [poster, setPoster] = useState("poster");
     const [title, setTitle] = useState("title");
     const [url, setURL] = useState("genericurl");
+
+    const token = useSelector((state) => state.user.jwt);
 
     // const dispatch = useDispatch();
 
@@ -17,12 +20,12 @@ const AddPost = () => {
             subReddit: subReddit,
             title: title,
             url: url,
-            username: poster,
+            token: token,
         };
         addPost(post);
         // dispatch(addPost(post));
         setSubReddit("");
-        setPoster("");
+        // setPoster("");
         setTitle("");
         setURL("");
     };
@@ -40,14 +43,14 @@ const AddPost = () => {
                         onChange={(e) => setSubReddit(e.target.value)}
                     />
                 </div>
-                <div>
+                {/* <div>
                     <label>Poster</label>
                     <input
                         type="text"
                         value={poster}
                         onChange={(e) => setPoster(e.target.value)}
                     />
-                </div>
+                </div> */}
                 <div>
                     <label>Title</label>
                     <input
