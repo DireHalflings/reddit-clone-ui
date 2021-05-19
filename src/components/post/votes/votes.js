@@ -18,7 +18,7 @@ const PostVotes = ({ votes, id }) => {
     };
 
     return (
-        <div>
+        <div className='post-votes'>
             <h2>Votes: {votes} </h2>
             <button onClick={handleAddOne}>
                 <i className="fas fa-arrow-up fa-2x" />

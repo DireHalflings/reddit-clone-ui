@@ -15,7 +15,7 @@ const PostComments = ({ id }) => {
     };
 
     return (
-        <div>
+        <div className="post-comments">
             <form>
                 <input
                     type="text"
@@ -25,7 +25,7 @@ const PostComments = ({ id }) => {
                 />
                 <input
                     type="submit"
-                    onClick={e => handleAddComment(e)}
+                    onClick={(e) => handleAddComment(e)}
                     value="Submit"
                 />
                 {/* {comments.map((comment, i) => {
@@ -33,7 +33,7 @@ const PostComments = ({ id }) => {
                 })} */}
             </form>
         </div>
-    )
+    );
 };
 
 export default PostComments;

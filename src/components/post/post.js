@@ -8,9 +8,9 @@ import "./post.css";
 const Post = ({ post }) => {
     const { title, time, username, subReddit, url, votes, comments, id } = post;
     return (
-        <div className ='post-container'>
-            <h2>{title}</h2>
-            <p>
+        <div className="post-container">
+            <h2 className="post-title">{title}</h2>
+            <p className="post-info">
                 Submitted {time.toLocaleString()} ago by {username} to{" "}
                 {subReddit}
             </p>

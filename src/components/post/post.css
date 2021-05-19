@@ -1,3 +1,38 @@
 .post-container {
     background-color: #fff;
+    width: 90vw;
+    height: 100vh;
+}
+
+.post-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 50px 0 0 150px;
+    position: relative;
+}
+.post-votes {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 5px;
+    left: 0;
+}
+.post-comments {
+    position: absolute;
+    bottom: 0;
+}
+.post-title {
+    position: absolute;
+    top: 0;
+}
+.post-img {
+    height: 300px;
+    width: 300px;
+}
+  h2 {
+    padding: 0;
+    font-size: 16px;
 }
