@@ -56,106 +56,108 @@ const Login = () => {
         }
     };
     return (
-        <div className={`form-container ${redboxClass}`}>
-            <form action="" className="loginContainer">
-                <div className="title-container">
-                    <h1>Sign In</h1>
-                </div>
-                <input
-                    type="email"
-                    name="email"
-                    id=""
-                    placeholder="Email"
-                    value={loginEmailInput}
-                    onChange={(e) => setLoginEmailInput(e.target.value)}
-                />
-                <input
-                    type="password"
-                    name=""
-                    id=""
-                    placeholder="Password"
-                    value={loginPasswordInput}
-                    onChange={(e) => setLoginPasswordInput(e.target.value)}
-                />
-                <input
-                    className="loginBtn"
-                    type="submit"
-                    value="Login"
-                    onClick={(e) => handleUserLogin(e)}
-                />
-            </form>
-
-            <form className="register-form-container">
-                <div className="register-container">
-                    <h1>Register</h1>
-                </div>
-                <div className="register-form__username">
-                    <label>Username:</label>
-                    <input
-                        type="text"
-                        className="register-form__username-input"
-                        value={usernameInput}
-                        onChange={(e) => setUsernameInput(e.target.value)}
-                    />
-                </div>
-
-                <div className="register-form__email">
-                    <label>Email:</label>
+        <div className="form-outer-container">
+            <div className={`form-container ${redboxClass}`}>
+                <form action="" className="loginContainer">
+                    <div className="title-container">
+                        <h1>Sign In</h1>
+                    </div>
                     <input
                         type="email"
-                        className="register-form__email-input"
-                        value={registerEmailInput}
-                        onChange={(e) => setRegisterEmailInput(e.target.value)}
+                        name="email"
+                        id=""
+                        placeholder="Email"
+                        value={loginEmailInput}
+                        onChange={(e) => setLoginEmailInput(e.target.value)}
                     />
-                </div>
-                <div className="register-form__password">
-                    <label>Password:</label>
                     <input
                         type="password"
-                        className="register-form__password-input"
-                        value={registerPasswordInput}
-                        onChange={(e) =>
-                            setRegisterPasswordInput(e.target.value)
-                        }
+                        name=""
+                        id=""
+                        placeholder="Password"
+                        value={loginPasswordInput}
+                        onChange={(e) => setLoginPasswordInput(e.target.value)}
                     />
-                </div>
-                <input
-                    className="registerBtn"
-                    type="submit"
-                    value="Register"
-                    onClick={(e) => handleSubmit(e)}
-                />
-            </form>
+                    <input
+                        className="loginBtn"
+                        type="submit"
+                        value="Login"
+                        onClick={(e) => handleUserLogin(e)}
+                    />
+                </form>
 
-            <div className="overlay-container">
-                <div className="overlay">
-                    <div className="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
-                        <p>
-                            To keep connected with us please login with your
-                            personal info
-                        </p>
-                        <button
-                            className="form-toggle-btn"
-                            id="signIn"
-                            onClick={(e) => toggleRedbox(e)}
-                        >
-                            Sign In
-                        </button>
+                <form className="register-form-container">
+                    <div className="register-container">
+                        <h1>Register</h1>
                     </div>
-                    <div className="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>
-                            Enter your personal details and start journey with
-                            us
-                        </p>
-                        <button
-                            className="form-toggle-btn"
-                            id="signUp"
-                            onClick={(e) => toggleRedbox(e)}
-                        >
-                            Sign Up
-                        </button>
+                    <div className="register-form__username">
+                        <label>Username:</label>
+                        <input
+                            type="text"
+                            className="register-form__username-input"
+                            value={usernameInput}
+                            onChange={(e) => setUsernameInput(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="register-form__email">
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            className="register-form__email-input"
+                            value={registerEmailInput}
+                            onChange={(e) => setRegisterEmailInput(e.target.value)}
+                        />
+                    </div>
+                    <div className="register-form__password">
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            className="register-form__password-input"
+                            value={registerPasswordInput}
+                            onChange={(e) =>
+                                setRegisterPasswordInput(e.target.value)
+                            }
+                        />
+                    </div>
+                    <input
+                        className="registerBtn"
+                        type="submit"
+                        value="Register"
+                        onClick={(e) => handleSubmit(e)}
+                    />
+                </form>
+
+                <div className="overlay-container">
+                    <div className="overlay">
+                        <div className="overlay-panel overlay-left">
+                            <h1>Welcome Back!</h1>
+                            <p>
+                                To keep connected with us please login with your
+                                personal info
+                            </p>
+                            <button
+                                className="form-toggle-btn"
+                                id="signIn"
+                                onClick={(e) => toggleRedbox(e)}
+                            >
+                                Sign In
+                            </button>
+                        </div>
+                        <div className="overlay-panel overlay-right">
+                            <h1>Hello, Friend!</h1>
+                            <p>
+                                Enter your personal details and start journey with
+                                us
+                            </p>
+                            <button
+                                className="form-toggle-btn"
+                                id="signUp"
+                                onClick={(e) => toggleRedbox(e)}
+                            >
+                                Sign Up
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

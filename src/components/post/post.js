@@ -3,21 +3,33 @@ import PostImg from "./imgs/imgs";
 import PostVotes from "./votes/votes";
 import PostComments from "./postComments/postComments";
 import LoadComments from "./loadComments/loadComments";
+
+import { timeSince } from '../../utils/time';
+
 import "./post.css";
 
 const Post = ({ post }) => {
     const { title, time, username, subReddit, url, votes, comments, id } = post;
     return (
         <div className="post-container">
-            <h2 className="post-title">{title}</h2>
-            <p className="post-info">
-                Submitted {time.toLocaleString()} ago by {username} to{" "}
-                {subReddit}
-            </p>
-            <PostImg url={url} />
-            <PostVotes votes={votes} id={id} />
-            <PostComments id={id} />
-            <LoadComments comments={comments} />
+            <div className="post__header">
+                <h2 className="post-title">{title}</h2>
+                <p className="post-info">
+                    Submitted {timeSince(time)} ago by {username} to {subReddit}
+                </p>
+            </div>
+            <div className="post__content">
+                <div className="post__content-votes">
+                    <PostVotes votes={votes} id={id} />
+                </div>
+                <div className="post__content-img">
+                    <PostImg url={url} />
+                </div>
+            </div>
+            <div className="post__comments">
+                <PostComments id={id} />
+                <LoadComments comments={comments} />
+            </div>
         </div>
     );
 };

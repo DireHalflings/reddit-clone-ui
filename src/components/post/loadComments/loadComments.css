@@ -1,0 +1,27 @@
+.post-loaded-comments {
+  width: 80%;
+  border-left: 2px solid #C4C4C4;
+  border-right: 2px solid #C4C4C4;
+  border-bottom: 2px solid #C4C4C4;
+  font-size: 14px;
+  font-weight: normal;
+  
+}
+
+.post-loaded-comments__text {
+  margin: 4px 0;
+  display: flex;
+  padding-left: 32px;
+}
+
+.post-loaded-comments__username {
+  font-weight: 700;
+  padding-right: 4px;
+}
+
+.post-loaded-comments__load-more {
+  display: flex;
+  justify-content: center;
+  background-color: #C4C4C4;
+  cursor: pointer;
+}

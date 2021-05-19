@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     addOneToVote,
     minusOneToVote,
 } from "../../../redux/actions/voteActions";
 import { useDispatch } from "react-redux";
 
+import './votes.css';
+
 const PostVotes = ({ votes, id }) => {
-    // const vote = useSelector((state) => state.vote.vote);
+    const [voteCount] = useState(700);
+
     const dispatch = useDispatch();
 
     const handleAddOne = () => {
@@ -19,11 +22,11 @@ const PostVotes = ({ votes, id }) => {
 
     return (
         <div className='post-votes'>
-            <h2>Votes: {votes} </h2>
-            <button onClick={handleAddOne}>
+            <button className="up-vote" onClick={handleAddOne}>
                 <i className="fas fa-arrow-up fa-2x" />
             </button>
-            <button onClick={handleMinusOne}>
+            <h2 className="post-votes__text">{voteCount}</h2>
+            <button className="down-vote" onClick={handleMinusOne}>
                 <i className="fas fa-arrow-down fa-2x" />
             </button>
         </div>

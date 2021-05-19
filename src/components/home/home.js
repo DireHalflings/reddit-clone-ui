@@ -19,6 +19,7 @@ const Home = () => {
     return (
         <div className="posts-container">
             {posts.map((post, i) => {
+                console.log(i);
                 return <Post key={post._id + i} post={post} />;
             })}
         </div>
