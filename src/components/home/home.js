@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { updatePosts } from "../../redux/actions/postActions";
 import Post from "../post/post";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,18 +7,23 @@ import { useSelector, useDispatch } from "react-redux";
 import "./home.css";
 
 const Home = () => {
-    const token = useSelector(state => state.user.jwt);
+    const posts = useSelector((state) => state.posts.posts);
+    const token = useSelector((state) => state.user.jwt);
     const dispatch = useDispatch();
+
+    const [curPosts, setCurPosts] = useState([]);
+
+    useEffect(() => {
+        setCurPosts(posts);
+    }, [posts, dispatch]);
 
     useEffect(() => {
         dispatch(updatePosts(token));
     }, [token, dispatch]);
 
-    const posts = useSelector((state) => state.posts.posts);
-
     return (
         <div className="posts-container">
-            {posts.map((post, i) => {
+            {curPosts.map((post, i) => {
                 return <Post key={post._id + i} post={post} />;
             })}
         </div>

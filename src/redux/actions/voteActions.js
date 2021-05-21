@@ -1,7 +1,38 @@
-import { ADD_ONE_TO_VOTE, MINUS_ONE_TO_VOTE } from "./actionConstants";
+import {
+    ADDING_ONE_TO_VOTE,
+    ADDED_ONE_TO_VOTE,
+    MINUSING_ONE_TO_VOTE,
+    MINUSED_ONE_TO_VOTE,
+} from "./actionConstants";
 
-export const addOneToVote = (id) => ({ type: ADD_ONE_TO_VOTE, payload: id });
-export const minusOneToVote = (id) => ({
-    type: MINUS_ONE_TO_VOTE,
-    payload: id,
-});
+import { plusVote, minusVote } from "../../api/post";
+
+export const addOneToVote = (post) => async (dispatch) => {
+    dispatch({ type: ADDING_ONE_TO_VOTE });
+    try {
+        const response = await plusVote(post);
+        dispatch({ type: ADDED_ONE_TO_VOTE, payload: response });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const minusOneToVote = (post) => async (dispatch) => {
+    dispatch({ type: MINUSING_ONE_TO_VOTE });
+    try {
+        const response = await minusVote(post);
+        dispatch({ type: MINUSED_ONE_TO_VOTE, payload: response });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+// export const createPost = (post) => async (dispatch) => {
+//     dispatch({ type: ADDING_POST });
+//     try {
+//         const response = await addPost(post);
+//         dispatch({ type: ADDED_POST, payload: response });
+//     } catch (err) {
+//         console.log(err);
+//     }
+// };
