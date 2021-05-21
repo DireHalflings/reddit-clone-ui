@@ -32,9 +32,6 @@ const PostComments = ({ id }) => {
                     onClick={(e) => handleAddComment(e)}
                     value="Submit"
                 />
-                {/* {comments.map((comment, i) => {
-                    return <h2 key={comment + i}>{comment}</h2>
-                })} */}
             </form>
         </div>
     );

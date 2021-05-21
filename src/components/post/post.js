@@ -3,6 +3,9 @@ import PostImg from "./imgs/imgs";
 import PostVotes from "./votes/votes";
 import PostComments from "./postComments/postComments";
 import LoadComments from "./loadComments/loadComments";
+
+import { timeSince } from '../../utils/time';
+
 import "./post.css";
 
 import { timeSince } from "../../utils/time";
