@@ -27,3 +27,4 @@ export const minusVote = async (post) => {
         headers: { "auth-token": post.token },
     });
 };
+

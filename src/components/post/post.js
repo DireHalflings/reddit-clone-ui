@@ -4,11 +4,9 @@ import PostVotes from "./votes/votes";
 import PostComments from "./postComments/postComments";
 import LoadComments from "./loadComments/loadComments";
 
-import { timeSince } from '../../utils/time';
+import { timeSince } from "../../utils/time";
 
 import "./post.css";
-
-import { timeSince } from "../../utils/time";
 
 const Post = ({ post }) => {
     const { title, time, username, subReddit, url, votes, comments, id } = post;
