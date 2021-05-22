@@ -3,7 +3,6 @@ import { getUsers } from "./api/users";
 import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import NavBar from "./components/navbar/navBar";
 import Home from "./components/home/home";
 import AddPost from "./components/addPost/addPost";
